@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+      "target": "ES6",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "sourceMap": true,
+      "outDir": "dist",
+      "strict": true,
+      "lib": ["esnext", "es5", "es6", "ES2018"],
+      "esModuleInterop": true,
+      "types": ["node"],
+      "strictPropertyInitialization": false,
+      "typeRoots": ["./node_modules/@types", "./src/utils/types"],
+      "baseUrl": "./src",
+      "paths": {
+          "@plugins/*": ["./plugins/*"],
+          "@routes/*": ["./routes/*"],
+          "@controllers/*": ["./controllers/*"],
+          "@services/*": ["./services/*"],
+          "@utils/*": ["./utils/*"],
+          "@middlewares/*": ["./middlewares/*"]
+      },
+      "traceResolution": true,
+      "module": "commonjs",
+  },
+  "include": ["src/**/**/*", "src/**/*", "*.ts"],
+  "exclude": ["node_modules", "dist", "__tests__"],
+  "ts-node": {
+      "files": true
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "barbats2",
+  "version": "1.0.0",
+  "main": "bootstrap.ts",
+  "scripts": {
+    "start": "node dist/bootstrap.js",
+    "build": "tsc -p tsconfig.json",
+    "dev": "ts-node-dev --exit-child --transpile-only -r tsconfig-paths/register --project tsconfig.json --respawn --ignore-watch node_modules src/bootstrap.ts",
+    "lint": "biome lint --write ./src",
+    "format": "biome format --write ./src",
+    "check": "biome check --write ./src",
+    "migrate": "prisma migrate dev",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "private": true,
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.7",
+    "@types/node": "^22.7.8",
+    "@types/nodemailer": "^6.4.16",
+    "prisma": "^5.21.1",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@fastify/autoload": "^6.0.2",
+    "@fastify/jwt": "^9.0.1",
+    "@prisma/client": "^5.21.1",
+    "bcrypt": "^5.1.1",
+    "class-validator": "^0.14.1",
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "fastify-plugin": "^5.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "nodemailer": "^6.9.15",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0"
+  }
+}
