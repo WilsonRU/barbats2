@@ -1,6 +1,6 @@
-import nodemailer, { Transporter } from "nodemailer";
-import SMTPTransport from "nodemailer/lib/smtp-transport";
-import { FastifyInstance, FastifyPluginAsync } from "fastify";
+import nodemailer, { type Transporter } from "nodemailer";
+import type SMTPTransport from "nodemailer/lib/smtp-transport";
+import type { FastifyInstance, FastifyPluginAsync } from "fastify";
 
 interface SendEmailOptions {
 	to: string;

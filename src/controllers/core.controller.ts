@@ -7,28 +7,25 @@ import {
 import { statusCode } from "@utils/shared/statusCode";
 
 async function coreController(app: FastifyInstance) {
-	app.post(
-		"/login",
-		async function (request: FastifyRequest, reply: FastifyReply) {
-			const { username, password } = request.body as {
-				username: string;
-				password: string;
-			};
+	app.post("/login", async (request: FastifyRequest, reply: FastifyReply) => {
+		const { username, password } = request.body as {
+			username: string;
+			password: string;
+		};
 
-			try {
-				const token = await authenticateUser(username, password);
-				return reply.send({ token });
-			} catch (error) {
-				return reply
-					.status(statusCode.UNAUTHORIZED)
-					.send({ message: "Invalid credentials" });
-			}
-		},
-	);
+		try {
+			const token = await authenticateUser(username, password);
+			return reply.send({ token });
+		} catch (error) {
+			return reply
+				.status(statusCode.UNAUTHORIZED)
+				.send({ message: "Invalid credentials" });
+		}
+	});
 
 	app.post(
 		"/register",
-		async function (request: FastifyRequest, reply: FastifyReply) {
+		async (request: FastifyRequest, reply: FastifyReply) => {
 			const { email, password, name } = request.body as {
 				email: string;
 				password: string;
@@ -48,7 +45,7 @@ async function coreController(app: FastifyInstance) {
 
 	app.post(
 		"/reset-password",
-		async function (request: FastifyRequest, reply: FastifyReply) {
+		async (request: FastifyRequest, reply: FastifyReply) => {
 			const user = request.user;
 
 			const { password } = request.body as { password: string };

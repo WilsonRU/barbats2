@@ -1,7 +1,7 @@
 import { FastifyInstance, FastifyReply } from "fastify";
 import type { PrismaClient } from "@prisma/client";
 
-import { JwtPayload } from "./jwtPayload";
+import type { JwtPayload } from "./jwtPayload";
 
 declare module "fastify" {
 	interface FastifyInstance {

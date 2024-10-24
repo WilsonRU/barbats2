@@ -1,5 +1,5 @@
 import { verifyJWT } from "@utils/jwt.util";
-import { JwtPayload } from "@utils/types/jwtPayload";
+import type { JwtPayload } from "@utils/types/jwtPayload";
 import type {
 	FastifyReply,
 	FastifyRequest,
@@ -10,7 +10,7 @@ export const authenticated: preHandlerHookHandler =
 	async function authenticated(
 		request: FastifyRequest,
 		reply: FastifyReply,
-		done: Function,
+		done: () => void,
 	) {
 		try {
 			const authHeader = request.headers.authorization;

@@ -8,7 +8,7 @@ async function userController(app: FastifyInstance) {
 	app.put(
 		"/",
 		{ preHandler: [authenticated] },
-		async function (request: FastifyRequest, reply: FastifyReply) {
+		async (request: FastifyRequest, reply: FastifyReply) => {
 			const user = request.user;
 
 			const { name } = request.body as { name: string };
