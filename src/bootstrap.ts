@@ -15,7 +15,7 @@ app.register(autoLoad, {
 });
 
 async function loadRoutes() {
-	const routesPath = join(__dirname, "routes");
+	const routesPath = join(__dirname, "controllers");
 	const routeFiles = readdirSync(routesPath).filter((file) =>
 		file.endsWith(".ts"),
 	);
