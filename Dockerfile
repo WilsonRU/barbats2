@@ -1,18 +1,21 @@
 # syntax = docker/dockerfile:1
 FROM node:21-slim
 
-ENV NODE_ENV="production"
-
 WORKDIR /app
+
+RUN npm install -g npm
 
 RUN apt-get update -qq && \
     apt-get install -y build-essential pkg-config python-is-python3 openssl
 
-COPY package.json package-lock.json ./
-RUN npm install
+COPY package.json package-lock.json yarn.lock ./
+RUN yarn --frozen-lockfile install
 COPY . .
 
-RUN npm run build
+RUN yarn build
+
+ENV NODE_ENV="production"
+
 RUN npx prisma migrate deploy
 
 EXPOSE 3000
