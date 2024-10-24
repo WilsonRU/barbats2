@@ -4,7 +4,7 @@
   "main": "bootstrap.ts",
   "scripts": {
     "start": "node dist/bootstrap.js",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
     "dev": "ts-node-dev --exit-child --transpile-only -r tsconfig-paths/register --project tsconfig.json --respawn --ignore-watch node_modules src/bootstrap.ts",
     "lint": "biome lint --write ./src",
     "format": "biome format --write ./src",
