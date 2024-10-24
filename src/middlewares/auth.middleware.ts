@@ -1,5 +1,5 @@
-import { verifyJWT } from "@utils/jwt.util";
-import type { JwtPayload } from "@utils/types/jwtPayload";
+import { verifyJWT } from "../utils/jwt.util";
+import type { JwtPayload } from "../utils/types/jwtPayload";
 import type {
 	FastifyReply,
 	FastifyRequest,

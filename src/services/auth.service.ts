@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
-import { prisma } from "@plugins/prisma.plugin";
-import { signJWT } from "@utils/jwt.util";
+import { prisma } from "../plugins/prisma.plugin";
+import { signJWT } from "../utils/jwt.util";
 
 export async function registerUser(
 	email: string,

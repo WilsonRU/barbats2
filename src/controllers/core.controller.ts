@@ -3,8 +3,8 @@ import {
 	authenticateUser,
 	registerUser,
 	resetUserPassword,
-} from "@services/auth.service";
-import { statusCode } from "@utils/shared/statusCode";
+} from "../services/auth.service";
+import { statusCode } from "../utils/shared/statusCode";
 
 async function coreController(app: FastifyInstance) {
 	app.post("/login", async (request: FastifyRequest, reply: FastifyReply) => {
@@ -23,25 +23,22 @@ async function coreController(app: FastifyInstance) {
 		}
 	});
 
-	app.post(
-		"/register",
-		async (request: FastifyRequest, reply: FastifyReply) => {
-			const { email, password, name } = request.body as {
-				email: string;
-				password: string;
-				name: string;
-			};
+	app.post("/signup", async (request: FastifyRequest, reply: FastifyReply) => {
+		const { email, password, name } = request.body as {
+			email: string;
+			password: string;
+			name: string;
+		};
 
-			try {
-				const user = await registerUser(email, password, name);
-				return reply.send({ user });
-			} catch (error) {
-				return reply
-					.status(statusCode.BAD_REQUEST)
-					.send({ message: "User already exists" });
-			}
-		},
-	);
+		try {
+			const user = await registerUser(email, password, name);
+			return reply.send({ user });
+		} catch (error) {
+			return reply
+				.status(statusCode.BAD_REQUEST)
+				.send({ message: "User already exists" });
+		}
+	});
 
 	app.post(
 		"/reset-password",

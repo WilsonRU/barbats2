@@ -1,8 +1,8 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 
-import { authenticated } from "@middlewares/auth.middleware";
-import { updateName } from "@services/user.service";
-import { statusCode } from "@utils/shared/statusCode";
+import { authenticated } from "../middlewares/auth.middleware";
+import { updateName } from "../services/user.service";
+import { statusCode } from "../utils/shared/statusCode";
 
 async function userController(app: FastifyInstance) {
 	app.put(
