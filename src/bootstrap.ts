@@ -1,8 +1,13 @@
 import Fastify from "fastify";
 import autoLoad from "@fastify/autoload";
+import fastifyRateLimit from "@fastify/rate-limit";
+
+import dotenv from "dotenv";
 import { join } from "node:path";
 import { readdirSync } from "node:fs";
-import dotenv from "dotenv";
+import fastifyCompress from "@fastify/compress";
+import fastifyHelmet from "@fastify/helmet";
+
 
 dotenv.config();
 
@@ -13,6 +18,16 @@ const routeFiles = readdirSync(routesPath).filter((file) => file.endsWith(ext));
 
 const app = Fastify({
 	logger: true,
+});
+
+app.register(fastifyHelmet);
+app.register(fastifyRateLimit, {
+	max: 100,
+	timeWindow: '1 minute'
+});
+app.register(fastifyCompress, {
+	global: true,
+	threshold: 2048
 });
 
 app.register(autoLoad, {
