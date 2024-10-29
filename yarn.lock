@@ -96,6 +96,14 @@
     pumpify "^2.0.1"
     readable-stream "^4.5.2"
 
+"@fastify/cors@^10.0.1":
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-10.0.1.tgz#c208fa5f672db31a8383400349e9852762903d64"
+  integrity sha512-O8JIf6448uQbOgzSkCqhClw6gFTAqrdfeA6R3fc/3gwTJGUp7gl8/3tbNB+6INuu4RmgVOq99BmvdGbtu5pgOA==
+  dependencies:
+    fastify-plugin "^5.0.0"
+    mnemonist "0.39.8"
+
 "@fastify/error@^4.0.0":
   version "4.0.0"
   resolved "https://registry.npmjs.org/@fastify/error/-/error-4.0.0.tgz"
@@ -248,6 +256,13 @@
   integrity sha512-6atioO8Y75fNcbmj0G7UjI9lXN2pQ/IGJ2FWT4a/btd0Lk9lQalHLKhkgKVZ3r+spnmWUKfbMi1GEe9wyHQfNQ==
   dependencies:
     "@types/node" "*"
+
+"@types/fastify-cors@^2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/fastify-cors/-/fastify-cors-2.1.2.tgz#3e98bf4ff7da6be116c384022852dbc27f5a0c0d"
+  integrity sha512-fH+ZjoLcV6DXs/C7OMsveS9dePt8qnrhW27NOqPtzjGKNln+ocJ5Mhdne22JOHh955RLu6NUY/EHoHlgOOZkLQ==
+  dependencies:
+    fastify-cors "*"
 
 "@types/jsonwebtoken@^9.0.7":
   version "9.0.7"
@@ -643,6 +658,27 @@ fastfall@^1.5.0:
   dependencies:
     reusify "^1.0.0"
 
+"fastify-cors-deprecated@npm:fastify-cors@6.0.3":
+  version "6.0.3"
+  resolved "https://registry.yarnpkg.com/fastify-cors/-/fastify-cors-6.0.3.tgz#1907f92c3f855a18ef6fb6213186c73cf0bbf9e4"
+  integrity sha512-fMbXubKKyBHHCfSBtsCi3+7VyVRdhJQmGes5gM+eGKkRErCdm0NaYO0ozd31BQBL1ycoTIjbqOZhJo4RTF/Vlg==
+  dependencies:
+    fastify-plugin "^3.0.0"
+    vary "^1.1.2"
+
+fastify-cors@*:
+  version "6.1.0"
+  resolved "https://registry.yarnpkg.com/fastify-cors/-/fastify-cors-6.1.0.tgz#b47bd7faf29113a884e59413ee198a9c323cf180"
+  integrity sha512-QBKz32IoY/iuT74CunRY1XOSpjSTIOh9E3FxulXIBhd0D2vdgG0kDvy0eG6HA/88sRfWHeba43LkGEXPz0Rh8g==
+  dependencies:
+    fastify-cors-deprecated "npm:fastify-cors@6.0.3"
+    process-warning "^1.0.0"
+
+fastify-plugin@^3.0.0:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-3.0.1.tgz#79e84c29f401020f38b524f59f2402103fd21ed2"
+  integrity sha512-qKcDXmuZadJqdTm6vlCqioEbyewF60b/0LOFCcYN1B6BIZGlYJumWWOYs70SFYLDAH4YqdE1cxH/RKMG7rFxgA==
+
 fastify-plugin@^5.0.0, fastify-plugin@^5.0.1:
   version "5.0.1"
   resolved "https://registry.npmjs.org/fastify-plugin/-/fastify-plugin-5.0.1.tgz"
@@ -1011,7 +1047,7 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
   resolved "https://registry.npmjs.org/mkdirp/-/mkdirp-1.0.4.tgz"
   integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
 
-mnemonist@^0.39.5:
+mnemonist@0.39.8, mnemonist@^0.39.5:
   version "0.39.8"
   resolved "https://registry.npmjs.org/mnemonist/-/mnemonist-0.39.8.tgz"
   integrity sha512-vyWo2K3fjrUw8YeeZ1zF0fy6Mu59RHokURlld8ymdUPjMlD9EC9ov1/YPqTgqRvUN9nTr3Gqfz29LYAmu0PHPQ==
@@ -1150,6 +1186,11 @@ process-nextick-args@~2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/process-nextick-args/-/process-nextick-args-2.0.1.tgz#7820d9b16120cc55ca9ae7792680ae7dba6d7fe2"
   integrity sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
+
+process-warning@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/process-warning/-/process-warning-1.0.0.tgz#980a0b25dc38cd6034181be4b7726d89066b4616"
+  integrity sha512-du4wfLyj4yCZq1VupnVSZmRsPJsNuxoDQFdCFHLaYiEbFBD7QE0a+I4D7hOxrVnh78QE/YipFAj9lXHiXocV+Q==
 
 process-warning@^4.0.0:
   version "4.0.0"
@@ -1535,6 +1576,11 @@ v8-compile-cache-lib@^3.0.1:
   version "3.0.1"
   resolved "https://registry.npmjs.org/v8-compile-cache-lib/-/v8-compile-cache-lib-3.0.1.tgz"
   integrity sha512-wa7YjyUGfNZngI/vtK0UHAN+lgDCxBPCylVXGp0zu59Fz5aiGtNXaq3DhIov063MorB+VfufLh3JlF2KdTK3xg==
+
+vary@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
+  integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
 
 webidl-conversions@^3.0.0:
   version "3.0.1"
