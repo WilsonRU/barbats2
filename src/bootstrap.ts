@@ -8,7 +8,6 @@ import { readdirSync } from "node:fs";
 import fastifyCompress from "@fastify/compress";
 import fastifyHelmet from "@fastify/helmet";
 
-
 dotenv.config();
 
 const APP_PORT = (process.env.APP_PORT || 4001) as number;
@@ -23,11 +22,11 @@ const app = Fastify({
 app.register(fastifyHelmet);
 app.register(fastifyRateLimit, {
 	max: 100,
-	timeWindow: '1 minute'
+	timeWindow: "1 minute",
 });
 app.register(fastifyCompress, {
 	global: true,
-	threshold: 2048
+	threshold: 2048,
 });
 
 app.register(autoLoad, {

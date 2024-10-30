@@ -4,10 +4,8 @@ import cors, { FastifyCorsOptions } from "@fastify/cors";
 const corsPlugin: FastifyPluginAsync = async (app: FastifyInstance) => {
 	const corsOptions: FastifyCorsOptions = {
 		origin: (origin, cb) => {
-            const hostname = new URL(origin as string).hostname
-			const allowedOrigins = [
-				"localhost",
-			];
+			const hostname = new URL(origin as string).hostname;
+			const allowedOrigins = ["localhost"];
 
 			if (!origin || allowedOrigins.includes(hostname)) {
 				cb(null, true);
@@ -22,4 +20,3 @@ const corsPlugin: FastifyPluginAsync = async (app: FastifyInstance) => {
 };
 
 export default corsPlugin;
-
