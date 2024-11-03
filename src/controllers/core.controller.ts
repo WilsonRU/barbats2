@@ -5,43 +5,87 @@ import {
 	resetUserPassword,
 } from "../services/auth.service";
 import { statusCode } from "../utils/shared/statusCode";
+import { authenticated } from "../middlewares/auth.middleware";
 
 async function coreController(app: FastifyInstance) {
-	app.post("/login", async (request: FastifyRequest, reply: FastifyReply) => {
-		const { username, password } = request.body as {
-			username: string;
-			password: string;
-		};
+	app.post(
+		"/login",
+		{
+			schema: {
+				body: {
+					type: "object",
+					properties: {
+						username: { type: "string" },
+						password: { type: "string" },
+					},
+					required: ["username", "password"],
+				},
+			},
+		},
+		async (request: FastifyRequest, reply: FastifyReply) => {
+			const { username, password } = request.body as {
+				username: string;
+				password: string;
+			};
 
-		try {
-			const token = await authenticateUser(username, password);
-			return reply.send({ token });
-		} catch (error) {
-			return reply
-				.status(statusCode.UNAUTHORIZED)
-				.send({ message: "Invalid credentials" });
-		}
-	});
-
-	app.post("/signup", async (request: FastifyRequest, reply: FastifyReply) => {
-		const { email, password, name } = request.body as {
-			email: string;
-			password: string;
-			name: string;
-		};
-
-		try {
-			const user = await registerUser(email, password, name);
-			return reply.send({ user });
-		} catch (error) {
-			return reply
-				.status(statusCode.BAD_REQUEST)
-				.send({ message: "User already exists" });
-		}
-	});
+			try {
+				const token = await authenticateUser(username, password);
+				return reply.send({ token });
+			} catch (error) {
+				return reply
+					.status(statusCode.UNAUTHORIZED)
+					.send({ message: "Invalid credentials" });
+			}
+		},
+	);
 
 	app.post(
+		"/signup",
+		{
+			schema: {
+				body: {
+					type: "object",
+					properties: {
+						username: { type: "string" },
+						password: { type: "string" },
+						name: { type: "string" }
+					},
+					required: ["username", "password", "name"],
+				},
+			},
+		},
+		async (request: FastifyRequest, reply: FastifyReply) => {
+			const { email, password, name } = request.body as {
+				email: string;
+				password: string;
+				name: string;
+			};
+
+			try {
+				const user = await registerUser(email, password, name);
+				return reply.send({ user });
+			} catch (error) {
+				return reply
+					.status(statusCode.BAD_REQUEST)
+					.send({ message: "User already exists" });
+			}
+		},
+	);
+
+	app.put(
 		"/reset-password",
+		{
+			preHandler: [authenticated],
+			schema: {
+				body: {
+					type: "object",
+					properties: {
+						password: { type: "string" },
+					},
+					required: ["password"],
+				},
+			},
+		},
 		async (request: FastifyRequest, reply: FastifyReply) => {
 			const user = request.user;
 

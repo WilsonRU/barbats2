@@ -7,7 +7,18 @@ import { statusCode } from "../utils/shared/statusCode";
 async function userController(app: FastifyInstance) {
 	app.put(
 		"/",
-		{ preHandler: [authenticated] },
+		{
+			preHandler: [authenticated],
+			schema: {
+				body: {
+					type: "object",
+					properties: {
+						name: { type: "string" },
+					},
+					required: ["name"],
+				},
+			},
+		},
 		async (request: FastifyRequest, reply: FastifyReply) => {
 			const user = request.user;
 
