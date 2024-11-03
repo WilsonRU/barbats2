@@ -26,7 +26,7 @@ class Mailler {
 			from: process.env.SMTP_FROM,
 			to: options.to,
 			subject: options.subject,
-			text: options.text,
+			html: options.text,
 		};
 
 		try {
