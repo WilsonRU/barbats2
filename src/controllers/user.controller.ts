@@ -30,9 +30,9 @@ async function userController(app: FastifyInstance) {
 				return reply.status(statusCode.ACCEPTED).send({
 					message: "Name update complete",
 				});
-			} catch (erro) {
+			} catch (err) {
 				return reply.status(statusCode.BAD_REQUEST).send({
-					message: "Unable to update user",
+					message: err instanceof Error ? err.message : "Ocorreu um erro.",
 				});
 			}
 		},

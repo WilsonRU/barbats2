@@ -31,10 +31,10 @@ async function coreController(app: FastifyInstance) {
 			try {
 				const token = await authenticateUser(username, password);
 				return reply.send({ token });
-			} catch (error) {
-				return reply
-					.status(statusCode.UNAUTHORIZED)
-					.send({ message: "Invalid credentials" });
+			} catch (err) {
+				return reply.status(statusCode.UNAUTHORIZED).send({
+					message: err instanceof Error ? err.message : "Ocorreu um erro.",
+				});
 			}
 		},
 	);
@@ -64,10 +64,10 @@ async function coreController(app: FastifyInstance) {
 			try {
 				const user = await registerUser(email, password, name);
 				return reply.send({ user });
-			} catch (error) {
-				return reply
-					.status(statusCode.BAD_REQUEST)
-					.send({ message: "User already exists" });
+			} catch (err) {
+				return reply.status(statusCode.BAD_REQUEST).send({
+					message: err instanceof Error ? err.message : "Ocorreu um erro.",
+				});
 			}
 		},
 	);
@@ -97,9 +97,9 @@ async function coreController(app: FastifyInstance) {
 				return reply.status(statusCode.ACCEPTED).send({
 					message: "Password changed successfully",
 				});
-			} catch (erro) {
+			} catch (err) {
 				return reply.status(statusCode.BAD_REQUEST).send({
-					message: "Unable to change password",
+					message: err instanceof Error ? err.message : "Ocorreu um erro.",
 				});
 			}
 		},
