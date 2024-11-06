@@ -15,19 +15,17 @@ export const authenticated: preHandlerHookHandler =
 		try {
 			const authHeader = request.headers.authorization;
 			if (!authHeader) {
-				return reply
-					.status(401)
-					.send({ message: "Missing authorization header" });
+				return reply.status(401).send({ message: "Token não encontrado" });
 			}
 
 			const token = authHeader.split(" ")[1];
 			if (!token) {
-				return reply.status(401).send({ message: "Invalid token format" });
+				return reply.status(401).send({ message: "Token no formato inválido" });
 			}
 
 			const userPayload = verifyJWT(token) as JwtPayload;
 			request.user = userPayload;
 		} catch (err) {
-			return reply.status(401).send({ message: "Invalid token" });
+			return reply.status(401).send({ message: "Token expirado ou inválido" });
 		}
 	};
