@@ -8,7 +8,7 @@
       "traceResolution": true,
       "esModuleInterop": true,
       "strictPropertyInitialization": false,
-      "types": ["node"],
+      "types": ["node", "jest"],
       "lib": ["esnext", "es5", "es6", "ES2018"],
       "typeRoots": ["./node_modules/@types", "./src/utils/types"],
       "baseUrl": "./src",
