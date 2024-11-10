@@ -10,7 +10,7 @@
     "format": "biome format --write ./src",
     "check": "biome check --write ./src",
     "migrate": "prisma migrate dev",
-    "test": "jest"
+    "test": "jest --passWithNoTests"
   },
   "private": true,
   "devDependencies": {

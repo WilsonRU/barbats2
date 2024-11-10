@@ -1,5 +1,5 @@
 import type { FastifyInstance, FastifyPluginAsync } from "fastify";
-import cors, { FastifyCorsOptions } from "@fastify/cors";
+import cors, { type FastifyCorsOptions } from "@fastify/cors";
 
 const corsPlugin: FastifyPluginAsync = async (app: FastifyInstance) => {
 	const corsOptions: FastifyCorsOptions = {
