@@ -1,8 +1,8 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
 
 import { authenticated } from "../middlewares/auth.middleware";
-import { updateName } from "../services/user.service";
 import { statusCode } from "../utils/shared/statusCode";
+import { UpdateNameUserCase } from "../usecases/user/UpdateName.usecase";
 
 async function userController(app: FastifyInstance) {
 	app.put(
@@ -25,7 +25,7 @@ async function userController(app: FastifyInstance) {
 			const { name } = request.body as { name: string };
 
 			try {
-				await updateName(user?.id as number, name);
+				await UpdateNameUserCase(user?.id as number, name);
 
 				return reply.status(statusCode.ACCEPTED).send({
 					message: "Name update complete",

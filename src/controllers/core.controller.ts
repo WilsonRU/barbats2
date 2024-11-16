@@ -1,11 +1,11 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import {
-	authenticateUser,
-	registerUser,
-	resetUserPassword,
-} from "../services/auth.service";
 import { statusCode } from "../utils/shared/statusCode";
 import { authenticated } from "../middlewares/auth.middleware";
+
+// Usecases
+import { signinUseCase } from "usecases/auth/signin.usecase";
+import { signupUseCase } from "usecases/auth/signup.usecase";
+import { resetPasswordUseCase } from "usecases/auth/resetPassword.usecase";
 
 async function coreController(app: FastifyInstance) {
 	app.post(
@@ -29,7 +29,7 @@ async function coreController(app: FastifyInstance) {
 			};
 
 			try {
-				const token = await authenticateUser(username, password);
+				const token = await signinUseCase(username, password);
 				return reply.send({ token });
 			} catch (err) {
 				return reply.status(statusCode.UNAUTHORIZED).send({
@@ -62,7 +62,7 @@ async function coreController(app: FastifyInstance) {
 			};
 
 			try {
-				const user = await registerUser(email, password, name);
+				const user = await signupUseCase(email, password, name);
 				return reply.send({ user });
 			} catch (err) {
 				return reply.status(statusCode.BAD_REQUEST).send({
@@ -92,7 +92,7 @@ async function coreController(app: FastifyInstance) {
 			const { password } = request.body as { password: string };
 
 			try {
-				await resetUserPassword(user?.id as number, password);
+				await resetPasswordUseCase(user?.id as number, password);
 
 				return reply.status(statusCode.ACCEPTED).send({
 					message: "Password changed successfully",
