@@ -11,9 +11,10 @@ import fastifyHelmet from "@fastify/helmet";
 dotenv.config();
 
 const APP_PORT = (process.env.APP_PORT || 4001) as number;
-const ext = process.env.NODE_ENV === "production" ? ".js" : ".ts";
 const routesPath = join(__dirname, "controllers");
-const routeFiles = readdirSync(routesPath).filter((file) => file.endsWith(ext));
+const routeFiles = readdirSync(routesPath).filter((file) =>
+	file.endsWith(".ts"),
+);
 
 const app = Fastify({
 	logger: true,

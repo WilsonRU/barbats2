@@ -3,14 +3,13 @@
   "version": "1.0.0",
   "main": "bootstrap.ts",
   "scripts": {
-    "start": "node dist/bootstrap.js",
-    "build": "rm -rf dist && tsc -p tsconfig.json",
     "dev": "ts-node-dev --exit-child --transpile-only --project tsconfig.json --respawn --ignore-watch node_modules src/bootstrap.ts",
     "lint": "biome lint --write ./src",
     "format": "biome format --write ./src",
     "check": "biome check --write ./src",
-    "migrate": "prisma migrate dev",
-    "test": "jest --passWithNoTests"
+    "prisma": "prisma",
+    "test": "jest --passWithNoTests",
+    "deploy": "prisma migrate deploy"
   },
   "private": true,
   "devDependencies": {
