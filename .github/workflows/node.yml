@@ -28,15 +28,3 @@ jobs:
 
       - name: Run tests
         run: yarn test
-
-      - name: Build project
-        run: yarn build
-
-      - name: Create dist artifact
-        run: tar -czvf dist.tar.gz dist
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: dist
-          path: dist.tar.gz
