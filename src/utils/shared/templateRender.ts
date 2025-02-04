@@ -1,6 +1,6 @@
 import ejs from "ejs";
-import { join } from "path";
-import { readFileSync } from "fs";
+import { join } from "node:path";
+import { readFileSync } from "node:fs";
 
 class TemplateRenderer {
 	private templatesDir: string;
