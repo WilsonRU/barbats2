@@ -1,10 +1,10 @@
 # BarbaTS Project
 
-**NodeJS** (^21.x)
-**Fastify**
-**Prisma**
-**Biome**
-**Typescript**
+- **NodeJS** (^21.x)
+- **Fastify**
+- **Prisma**
+- **Biome**
+- **Typescript**
 
 ## Setup
 
