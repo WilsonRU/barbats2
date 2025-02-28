@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { prisma } from "../../plugins/prisma.plugin";
+import { prisma } from "@plugins/prisma.plugin";
 
 export async function signupUseCase(
 	email: string,

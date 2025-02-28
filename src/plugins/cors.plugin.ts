@@ -13,7 +13,7 @@ const corsPlugin: FastifyPluginAsync = async (app: FastifyInstance) => {
 			}
 			cb(new Error("Destino não autorizado"), false);
 		},
-		methods: ["GET", "POST", "PUT", "DELETE"],
+		methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
 		credentials: true,
 	};
 	app.register(cors, corsOptions);
