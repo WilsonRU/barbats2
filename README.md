@@ -2,7 +2,7 @@
 
 - **NodeJS** (^21.x)
 - **Fastify**
-- **Prisma**
+- **Knex**
 - **Biome**
 - **Typescript**
 
