@@ -1,10 +1,7 @@
-import { prisma } from "../../plugins/prisma.plugin";
+import db from "utils/knex";
 
 export async function UpdateNameUserCase(id: number, name: string) {
-	await prisma.user.update({
-		where: { id },
-		data: {
-			name,
-		},
+	await db("users").where("id", id).update({
+		name,
 	});
 }

@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { prisma } from "../../plugins/prisma.plugin";
+import db from "utils/knex";
 
 export async function signupUseCase(
 	email: string,
@@ -7,12 +7,11 @@ export async function signupUseCase(
 	name: string,
 ) {
 	const hashedPassword = await bcrypt.hash(password, 10);
-	const user = await prisma.user.create({
-		data: {
-			email,
-			password: hashedPassword,
-			name,
-		},
+	const user = await db("users").insert({
+		email,
+		password: hashedPassword,
+		name,
+		created_at: db.fn.now(),
 	});
 	return user;
 }
