@@ -22,10 +22,10 @@ npm install
 npm run dev
 ```
 
-2. Prisma
+2. Knex
 
 ```bash
-npm run prisma <command>
+npm run knex <command>
 ```
 
 3. Biome Format
