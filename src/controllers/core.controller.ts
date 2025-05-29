@@ -1,11 +1,11 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from "fastify";
-import { statusCode } from "../utils/shared/statusCode";
-import { authenticated } from "../middlewares/auth.middleware";
+import { statusCode } from "@utils/shared/statusCode";
+import { authenticated } from "@middlewares/auth.middleware";
 
 // Usecases
-import { signinUseCase } from "usecases/auth/signin.usecase";
-import { signupUseCase } from "usecases/auth/signup.usecase";
-import { resetPasswordUseCase } from "usecases/auth/resetPassword.usecase";
+import { signinUseCase } from "@usecases/auth/signin.usecase";
+import { signupUseCase } from "@usecases/auth/signup.usecase";
+import { resetPasswordUseCase } from "@usecases/auth/resetPassword.usecase";
 
 async function coreController(app: FastifyInstance) {
 	app.post(
